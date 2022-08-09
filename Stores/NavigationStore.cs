@@ -20,11 +20,11 @@ namespace HotelReservation.Stores
             }
         }
 
+        public event Action CurrentViewModelChanged;
+
         private void OnCurrentModelChanged()
         {
             CurrentViewModelChanged?.Invoke();
         }
-
-        public event Action CurrentViewModelChanged;
     }
 }

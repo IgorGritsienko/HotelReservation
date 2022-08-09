@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HotelReservation.DbContexts
 {
-    internal class HotelReservationDbContext : DbContext
+    public class HotelReservationDbContext : DbContext
     {
         public HotelReservationDbContext(DbContextOptions options) : base(options)
         {

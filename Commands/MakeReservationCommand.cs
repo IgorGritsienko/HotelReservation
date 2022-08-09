@@ -32,8 +32,9 @@ namespace HotelReservation.Commands
 
         public override bool CanExecute(object parameter)
         {
-            return !string.IsNullOrEmpty(_makeReservationViewModel.Username) &&
+           return !string.IsNullOrEmpty(_makeReservationViewModel.Username) &&
                 _makeReservationViewModel.FloorNumber > 0 &&
+                _makeReservationViewModel.StartDate <= _makeReservationViewModel.EndDate &&
                 base.CanExecute(parameter);
         }
 
@@ -74,7 +75,9 @@ namespace HotelReservation.Commands
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(MakeReservationViewModel.Username) ||
-                e.PropertyName == nameof(MakeReservationViewModel.FloorNumber))
+                e.PropertyName == nameof(MakeReservationViewModel.FloorNumber) ||
+                e.PropertyName == nameof(MakeReservationViewModel.StartDate) ||
+                e.PropertyName == nameof(MakeReservationViewModel.EndDate))
             {
                 OnCanExecuteChanged();
             }

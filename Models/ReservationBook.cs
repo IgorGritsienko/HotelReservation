@@ -38,7 +38,7 @@ namespace HotelReservation.Models
         {
             Reservation conflictingReservation = _reservationConflictValidator.GetConflictingReservation(reservation);
 
-            if (conflictingReservation != null)
+            if (conflictingReservation is not null)
             {
                 throw new ReservationConflictException(conflictingReservation, reservation);
             }

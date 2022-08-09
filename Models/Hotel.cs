@@ -11,6 +11,8 @@ namespace HotelReservation.Models
         private readonly ReservationBook _reservationBook;
 
         public string Name { get; }
+
+
         public Hotel(string name, ReservationBook reservationBook)
         {
             Name = name;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelReservation.DbContexts
 {
-    internal class HotelReservationDbContextFactory
+    public class HotelReservationDbContextFactory
     {
         private readonly string _connectionString;
 

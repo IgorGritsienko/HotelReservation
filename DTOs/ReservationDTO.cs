@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelReservation.DTO
 {
-    internal class ReservationDTO
+    public class ReservationDTO
     {
         [Key]
         public Guid Id { get; set; }

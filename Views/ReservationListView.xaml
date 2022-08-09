@@ -48,11 +48,10 @@
         </Grid>
 
         <Grid Grid.Row="2" Margin="0 25 0 0">
-            <Grid Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+            <Grid Visibility="{Binding HasErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <TextBlock 
                     Foreground="Red" 
-                    Text="{Binding ErrorMessage}" 
-                    Visibility="{Binding HasErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                    Text="{Binding ErrorMessage}" />
 
                 <ListView x:Name="listView" ItemsSource="{Binding Reservations}"
                           SelectedItem="{Binding SelectedItem}"

@@ -74,7 +74,7 @@ namespace HotelReservation.ViewModels
 
                 if (EndDate < StartDate)
                 {
-                    AddError("Дата начала бронирования не должна превосходить дату конца бронирования", nameof(StartDate));
+                    AddError("Дата начала бронирования не должна превосходить дату конца бронирования", nameof(StartDate));                   
                 }
             }
         }
@@ -128,9 +128,9 @@ namespace HotelReservation.ViewModels
 
         public bool HasErrors => _propertynameToErrorsDictionary.Any();
 
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-        public IEnumerable GetErrors(string? propertyName)
+        public IEnumerable GetErrors(string propertyName)
         {
             return _propertynameToErrorsDictionary.GetValueOrDefault(propertyName, new List<string>());
         }
@@ -142,7 +142,7 @@ namespace HotelReservation.ViewModels
         
         private void OnErrorsChanged(string propertyName)
         {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(EndDate)));
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(propertyName)));
         }
     }
 }

@@ -20,7 +20,7 @@ namespace HotelReservation.Services.ReservationProviders
         }
 
 
-        // ассинхронное получение всех записей из БД
+        // получение всех записей из БД
         public IEnumerable<Reservation> GetAllReservations()
         {
             using (HotelReservationDbContext context = _dbContextFactory.CreateDbContext())

@@ -22,6 +22,7 @@ namespace HotelReservation.Commands
             _viewModel = viewModel;
             _hotel = Hotel;
             _reservationViewNavigationService = reservationViewNavigationService;
+            _viewModel.PropertyChanged += OnViewModelPropertyChanged;
         }
 
         public override void Execute(object parameter)
@@ -29,6 +30,12 @@ namespace HotelReservation.Commands
             Reservation reservation = ToReservation(_viewModel.SelectedItem);
             _hotel.DeleteReservation(reservation);
             _reservationViewNavigationService.Navigate();
+        }
+
+        public override bool CanExecute(object parameter)
+        { 
+            return _viewModel.SelectedItem is not null &&
+                base.CanExecute(parameter);
         }
 
         private Reservation ToReservation(ReservationViewModel r)
@@ -40,6 +47,14 @@ namespace HotelReservation.Commands
             DateTime.TryParse(r.EndDate, out DateTime endDate);
 
             return new Reservation(new RoomID(floorNumber, roomNumber), r.Username, startDate, endDate);
+        }
+
+        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ReservationListViewModel.SelectedItem))
+            {
+                OnCanExecuteChanged();
+            }
         }
     }
 }

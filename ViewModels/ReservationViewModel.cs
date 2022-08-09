@@ -13,7 +13,7 @@ namespace HotelReservation.ViewModels
     {
         private readonly Reservation _reservation;
 
-        public string RoomID => _reservation.RoomID?.ToString();
+        public string RoomID => _reservation.RoomID?.ToString()??string.Empty;
         public string Username => _reservation.Username;
         public string StartDate => _reservation.StartTime.Date.ToString("d");
         public string EndDate => _reservation.EndTime.Date.ToString("d");

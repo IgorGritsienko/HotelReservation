@@ -47,7 +47,7 @@ namespace HotelReservation.ViewModels
         public ICommand MakeReservationCommand { get; }
         public ICommand DeleteReservationCommand { get; }
 
-        public ReservationListViewModel(Hotel hotel, NavigationService makeReservationNavigationService, 
+        public ReservationListViewModel(Hotel hotel, NavigationService makeReservationNavigationService,
                                                      NavigationService reservationViewNavigationService)
         {
             _hotel = hotel;
@@ -57,17 +57,23 @@ namespace HotelReservation.ViewModels
             DeleteReservationCommand = new DeleteReservationCommand(this, hotel, reservationViewNavigationService);
 
             UpdateReservations();
-
         }
 
         public void UpdateReservations()
         {
             _reservations.Clear();
 
-            foreach (Reservation reservation in _hotel.GetAllReservations())
+            try
             {
-                ReservationViewModel reservationViewModel = new ReservationViewModel(reservation);
-                _reservations.Add(reservationViewModel);
+                foreach (Reservation reservation in _hotel.GetAllReservations())
+                {
+                    ReservationViewModel reservationViewModel = new ReservationViewModel(reservation);
+                    _reservations.Add(reservationViewModel);
+                }
+            }
+            catch (Exception)
+            {
+                ErrorMessage = "Не удалось обновить данные.";
             }
         }
     }

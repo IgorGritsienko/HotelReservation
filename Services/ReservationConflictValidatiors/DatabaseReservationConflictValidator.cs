@@ -24,14 +24,12 @@ namespace HotelReservation.Services.ReservationConflictValidatiors
             using (HotelReservationDbContext context = _dbContextFactory.CreateDbContext())
             {
 
-#pragma warning disable CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
-                ReservationDTO reservationDTO = context.Reservations
+                ReservationDTO? reservationDTO = context.Reservations
                     .Where(r => r.FloorNumber == reservation.RoomID.FloorNumber)
                     .Where(r => r.RoomNumber == reservation.RoomID.RoomNumber)
                     .Where(r => r.EndTime > reservation.StartTime)
                     .Where(r => r.StartTime < reservation.EndTime)
                     .FirstOrDefault();
-#pragma warning restore CS8600 // Преобразование литерала, допускающего значение NULL или возможного значения NULL в тип, не допускающий значение NULL.
 
                 if (reservationDTO == null)
                 {
