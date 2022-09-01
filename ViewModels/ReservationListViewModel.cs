@@ -33,6 +33,17 @@ namespace HotelReservation.ViewModels
 
         public bool HasErrorMessage => !string.IsNullOrEmpty(ErrorMessage);
 
+        private bool _listVisibility;
+        public bool ListVisibility
+        {
+            get { return _listVisibility; }
+            set
+            {
+                _listVisibility = value;
+                OnPropertyChanged(nameof(ListVisibility));
+            }
+        }
+
         private ReservationViewModel _selectedItem;
         public ReservationViewModel SelectedItem
         {
@@ -69,6 +80,15 @@ namespace HotelReservation.ViewModels
                 {
                     ReservationViewModel reservationViewModel = new ReservationViewModel(reservation);
                     _reservations.Add(reservationViewModel);
+                }
+
+                if (_reservations.Count > 0)
+                {
+                    _listVisibility = true;
+                }
+                else
+                {
+                    _listVisibility = false;
                 }
             }
             catch (Exception)

@@ -34,6 +34,7 @@ namespace HotelReservation.Commands
         {
            return !string.IsNullOrEmpty(_makeReservationViewModel.Username) &&
                 _makeReservationViewModel.FloorNumber > 0 &&
+                _makeReservationViewModel.RoomNumber > 0 &&
                 _makeReservationViewModel.StartDate <= _makeReservationViewModel.EndDate &&
                 base.CanExecute(parameter);
         }
@@ -76,6 +77,7 @@ namespace HotelReservation.Commands
         {
             if (e.PropertyName == nameof(MakeReservationViewModel.Username) ||
                 e.PropertyName == nameof(MakeReservationViewModel.FloorNumber) ||
+                e.PropertyName == nameof(MakeReservationViewModel.RoomNumber) ||
                 e.PropertyName == nameof(MakeReservationViewModel.StartDate) ||
                 e.PropertyName == nameof(MakeReservationViewModel.EndDate))
             {

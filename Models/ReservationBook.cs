@@ -42,7 +42,6 @@ namespace HotelReservation.Models
             {
                 throw new ReservationConflictException(conflictingReservation, reservation);
             }
-
             _reservationCreator.CreateReservation(reservation);
         }
 

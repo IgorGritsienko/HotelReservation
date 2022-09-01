@@ -48,15 +48,16 @@
         </Grid>
 
         <Grid Grid.Row="2" Margin="0 25 0 0">
-            <Grid Visibility="{Binding HasErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid Visibility="{Binding ListVisibility, Converter={StaticResource BooleanToVisibilityConverter}}">
+
                 <TextBlock 
                     Foreground="Red" 
                     Text="{Binding ErrorMessage}" />
 
                 <ListView x:Name="listView" ItemsSource="{Binding Reservations}"
                           SelectedItem="{Binding SelectedItem}"
-                          Visibility="{Binding HasErrorMessage, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
-                    
+                    Visibility="{Binding HasErrorMessage, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />

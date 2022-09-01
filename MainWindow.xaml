@@ -21,7 +21,6 @@
                     <views:ReservationListView />
                 </DataTemplate>
             </Grid.Resources>
-
             <ContentControl Content="{Binding CurrentViewModel}" />
         </Grid>
     </ScrollViewer>
